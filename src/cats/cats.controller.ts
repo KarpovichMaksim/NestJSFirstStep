@@ -1,5 +1,5 @@
-import { Redirect } from "@nestjs/common";
-import { Controller, Get, HttpCode, Post, Header } from "@nestjs/common";
+import { HostParam, Redirect } from "@nestjs/common";
+import { Controller, Get, HttpCode, Post, Header, Param } from "@nestjs/common";
 
 @Controller("cats")
 export class CatsController {
@@ -9,6 +9,10 @@ export class CatsController {
   @Redirect("https://nestjs.com", 301)
   create(): string {
     return `Add new cat`;
+  }
+  @Get(":id")
+  findOne(@Param() params): string {
+    return `This action return cat with current param ${params.id}`;
   }
   @Get()
   findAll(): string {
