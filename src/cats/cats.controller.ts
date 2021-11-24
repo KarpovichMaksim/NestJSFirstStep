@@ -1,15 +1,17 @@
-import { Controller, Get, Req, Ip, HostParam } from "@nestjs/common";
-import { Request } from "express";
+import { Redirect } from "@nestjs/common";
+import { Controller, Get, HttpCode, Post, Header } from "@nestjs/common";
 
 @Controller("cats")
 export class CatsController {
+  @Post()
+  @HttpCode(204)
+  @Header("Catch-Control", "none")
+  @Redirect("https://nestjs.com", 301)
+  create(): string {
+    return `Add new cat`;
+  }
   @Get()
-  findAll(
-    @Req() request: Request,
-    @Ip() ip: string,
-    @HostParam() host: string
-  ): string {
-    console.log(`${ip} ${host}`);
-    return `${ip} ${host} This action return cats`;
+  findAll(): string {
+    return `This action return cats`;
   }
 }
