@@ -1,4 +1,12 @@
-import { Body, Delete, Patch, Put, Query } from "@nestjs/common";
+import {
+  Body,
+  Delete,
+  HttpException,
+  HttpStatus,
+  Patch,
+  Put,
+  Query,
+} from "@nestjs/common";
 import { Controller, Get, Post, Param } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cat.dto";
 import { UpdateCatDto } from "./dto/update-cat-dto";
@@ -18,6 +26,7 @@ export class CatsController {
   }
   @Get()
   async findAll(): Promise<Cat[]> {
+    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
     return this.catsService.findAll();
   }
   @Patch(":id")
