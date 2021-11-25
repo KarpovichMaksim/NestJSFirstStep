@@ -26,7 +26,13 @@ export class CatsController {
   }
   @Get()
   async findAll(): Promise<Cat[]> {
-    throw new HttpException("Forbidden", HttpStatus.FORBIDDEN);
+    throw new HttpException(
+      {
+        status: HttpStatus.FORBIDDEN,
+        error: "Some custom error message",
+      },
+      HttpStatus.FORBIDDEN
+    );
     return this.catsService.findAll();
   }
   @Patch(":id")
