@@ -4,19 +4,20 @@ import {
   HttpException,
   HttpStatus,
   Patch,
-  Put,
-  Query,
+  UseFilters,
 } from "@nestjs/common";
 import { Controller, Get, Post, Param } from "@nestjs/common";
 import { CreateCatDto } from "./dto/create-cat.dto";
 import { UpdateCatDto } from "./dto/update-cat-dto";
 import { CatsService } from "./cats.service";
 import { Cat } from "./interfaces/cat.interface";
+import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
 
 @Controller("cats")
 export class CatsController {
   constructor(private catsService: CatsService) {}
   @Post()
+  @UseFilters(new HttpExceptionFilter())
   async create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
