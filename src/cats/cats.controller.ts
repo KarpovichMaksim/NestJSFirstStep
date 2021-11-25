@@ -3,6 +3,7 @@ import {
   Delete,
   HttpException,
   HttpStatus,
+  ParseIntPipe,
   Patch,
   UseFilters,
 } from "@nestjs/common";
@@ -22,8 +23,8 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
   @Get(":id")
-  findOne(@Param() params): string {
-    return `This action return cat with current param ${params.id}`;
+  findOne(@Param("id", ParseIntPipe) id): string {
+    return `This action return cat with current param ${id}`;
   }
   @Get()
   async findAll(): Promise<Cat[]> {
