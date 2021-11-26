@@ -9,7 +9,7 @@ async function bootstrap() {
   //const { httpAdapter } = app.get(HttpAdapterHost);
   //app.useGlobalFilters(new AllExceptionFilter(httpAdapter));
   //app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalGuards(new AuthGuard());
+  //app.useGlobalGuards(new AuthGuard());
   await app.listen(3000);
 }
 bootstrap();

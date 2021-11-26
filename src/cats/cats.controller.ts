@@ -25,7 +25,7 @@ export class CatsController {
     return this.catsService.create(createCatDto);
   }
   @Get(":id")
-  @UseGuards(new RoleGuard())
+  @UseGuards(RoleGuard)
   findOne(@Param("id", ParseIntPipe) id): string {
     return `This action return cat with current param ${id}`;
   }
