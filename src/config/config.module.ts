@@ -10,7 +10,7 @@ export class ConfigModule {
         {
           provide: "CONFIG_OPTIONS",
           useValue: options,
-          scope: Scope.TRANSIENT,
+          scope: Scope.DEFAULT,
         },
         ConfigService,
       ],
