@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from "@nestjs/common";
+import { DynamicModule, Module, Scope } from "@nestjs/common";
 import { ConfigService } from "./config.service";
 
 @Module({})
@@ -10,6 +10,7 @@ export class ConfigModule {
         {
           provide: "CONFIG_OPTIONS",
           useValue: options,
+          scope: Scope.TRANSIENT,
         },
         ConfigService,
       ],
