@@ -11,7 +11,7 @@ import { LoggerMiddleware } from "./common/middleware/logger.middleware";
 import { ConfigModule } from "./config/config.module";
 
 @Module({
-  imports: [CatsModule, ConfigModule.register()],
+  imports: [CatsModule, ConfigModule.register({ folder: "./config" })],
   controllers: [AppController],
   providers: [AppService],
 })
