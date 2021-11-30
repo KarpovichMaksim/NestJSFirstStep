@@ -1,4 +1,12 @@
-import { Module } from '@nestjs/common';
+import { DynamicModule, Module } from "@nestjs/common";
 
 @Module({})
-export class ConfigModule {}
+export class ConfigModule {
+  static register(): DynamicModule {
+    return {
+      module: ConfigModule,
+      providers: [],
+      exports: [],
+    };
+  }
+}
