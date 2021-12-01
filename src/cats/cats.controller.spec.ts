@@ -8,8 +8,13 @@ describe("CatsController", () => {
   let catsService: CatsService;
 
   beforeEach(async () => {
-    catsService = new CatsService();
-    catsController = new CatsController(catsService);
+    const moduleRef = await Test.createTestingModule({
+      controllers: [CatsController],
+      providers: [CatsService],
+    }).compile();
+
+    catsService = moduleRef.get<CatsService>(CatsService);
+    catsController = moduleRef.get<CatsController>(CatsController);
   });
 
   it("should be defined", () => {
