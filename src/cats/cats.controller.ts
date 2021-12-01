@@ -16,6 +16,7 @@ import { CatsService } from "./cats.service";
 import { Cat } from "./interfaces/cat.interface";
 import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
 import { RoleGuard } from "src/common/guards/role.guard";
+import { Roles } from "src/common/decorators/role.decorator";
 
 @Controller("cats")
 export class CatsController {
@@ -30,7 +31,7 @@ export class CatsController {
   findOne(@Param("id", ParseIntPipe) id): string {
     return `This action return cat with current param ${id}`;
   }
-  @SetMetadata("roles", ["user"])
+  @Roles("admin")
   @Get()
   async findAll(): Promise<Cat[]> {
     throw new HttpException(
