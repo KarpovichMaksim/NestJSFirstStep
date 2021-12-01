@@ -1,10 +1,17 @@
-import { Injectable, OnModuleInit } from "@nestjs/common";
+import {
+  Injectable,
+  OnApplicationShutdown,
+  OnModuleInit,
+} from "@nestjs/common";
 import { Cat } from "./interfaces/cat.interface";
 
 @Injectable()
-export class CatsService implements OnModuleInit {
+export class CatsService implements OnModuleInit, OnApplicationShutdown {
   private readonly cats: Cat[] = [];
 
+  onApplicationShutdown(signal: string) {
+    console.log(signal);
+  }
   onModuleInit() {
     console.log("The module has been initialization");
   }
