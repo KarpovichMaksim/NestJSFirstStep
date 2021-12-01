@@ -7,10 +7,12 @@ import { ValidationPipe } from "./common/pipes/validation.pipe";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   //lazy module louder
-  const lazyModuleLoader = app.get(LazyModuleLoader);
-  const { LazyModule } = await import("./lazy/lazy.module");
-  const moduleRef = await lazyModuleLoader.load(() => LazyModule);
+  //const lazyModuleLoader = app.get(LazyModuleLoader);
+  //const { LazyModule } = await import("./lazy/lazy.module");
+  //const moduleRef = await lazyModuleLoader.load(() => LazyModule);
+
   //const { httpAdapter } = app.get(HttpAdapterHost);
   //app.useGlobalFilters(new AllExceptionFilter(httpAdapter));
   //app.useGlobalPipes(new ValidationPipe());
