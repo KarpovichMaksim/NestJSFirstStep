@@ -15,8 +15,8 @@ import { UpdateCatDto } from "./dto/update-cat-dto";
 import { CatsService } from "./cats.service";
 import { Cat } from "./interfaces/cat.interface";
 import { HttpExceptionFilter } from "../common/filters/http-exception.filter";
-import { RoleGuard } from "src/common/guards/role.guard";
-import { Roles } from "src/common/decorators/role.decorator";
+import { RoleGuard } from "../common/guards/role.guard";
+import { Roles } from "../common/decorators/role.decorator";
 
 @Controller("cats")
 export class CatsController {
