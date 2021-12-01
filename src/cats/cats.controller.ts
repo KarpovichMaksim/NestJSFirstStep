@@ -5,6 +5,7 @@ import {
   HttpStatus,
   ParseIntPipe,
   Patch,
+  SetMetadata,
   UseFilters,
   UseGuards,
 } from "@nestjs/common";
@@ -29,6 +30,7 @@ export class CatsController {
   findOne(@Param("id", ParseIntPipe) id): string {
     return `This action return cat with current param ${id}`;
   }
+  @SetMetadata("roles", ["user"])
   @Get()
   async findAll(): Promise<Cat[]> {
     throw new HttpException(
