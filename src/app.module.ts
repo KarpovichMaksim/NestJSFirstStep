@@ -15,7 +15,7 @@ import { LazyModule } from "./lazy/lazy.module";
 @Module({
   imports: [
     CatsModule,
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ ignoreEnvFile: true }),
     ConfigFile.register({ folder: "./config" }),
     LazyModule,
   ],
