@@ -8,11 +8,17 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { CatsModule } from "./cats/cats.module";
 import { LoggerMiddleware } from "./common/middleware/logger.middleware";
-import { ConfigModule } from "./config/config.module";
-import { LazyModule } from './lazy/lazy.module';
+import { ConfigModule as ConfigFile } from "./config/config.module";
+import { ConfigModule } from "@nestjs/config";
+import { LazyModule } from "./lazy/lazy.module";
 
 @Module({
-  imports: [CatsModule, ConfigModule.register({ folder: "./config" }), LazyModule],
+  imports: [
+    CatsModule,
+    ConfigModule.forRoot(),
+    ConfigFile.register({ folder: "./config" }),
+    LazyModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
