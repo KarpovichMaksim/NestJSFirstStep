@@ -11,11 +11,12 @@ import { LoggerMiddleware } from "./common/middleware/logger.middleware";
 import { ConfigModule as ConfigFile } from "./config/config.module";
 import { ConfigModule } from "@nestjs/config";
 import { LazyModule } from "./lazy/lazy.module";
+import configuration from "./config/configuration";
 
 @Module({
   imports: [
     CatsModule,
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ load: [configuration], isGlobal: true }),
     ConfigFile.register({ folder: "./config" }),
     LazyModule,
   ],
